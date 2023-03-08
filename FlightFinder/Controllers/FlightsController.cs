@@ -18,7 +18,7 @@ namespace FlightFinder.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<FlightRoute> GetContacts()
+        public IEnumerable<FlightRoute> GetFlights()
         {
             List<FlightRoute> flights = new List<FlightRoute>();
 
