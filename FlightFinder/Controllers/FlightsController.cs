@@ -1,6 +1,6 @@
 ﻿using FlightFinder.Models;
+using FlightFinder.Services;
 using Microsoft.AspNetCore.Mvc;
-using Newtonsoft.Json;
 
 namespace FlightFinder.Controllers
 {
@@ -8,28 +8,44 @@ namespace FlightFinder.Controllers
     [ApiController]
     public class FlightsController : ControllerBase
     {
-        private readonly IWebHostEnvironment _webHostEnvironment;
-        private readonly IConfiguration _configuration;
+        // private readonly IConfiguration _configuration;
+        readonly IFlightRepository _repository;
 
-        public FlightsController(IWebHostEnvironment webHostEnvironment, IConfiguration configuration)
-        {
-            _webHostEnvironment = webHostEnvironment;
-            _configuration = configuration;
-        }
+        public FlightsController(IFlightRepository repository) => _repository = repository;
 
         [HttpGet]
-        public IEnumerable<FlightRoute> GetFlights()
+        public IEnumerable<FlightRoute> GetAllFlights()
         {
-            List<FlightRoute> flights = new List<FlightRoute>();
-
-            using (StreamReader reader = new StreamReader(@"Data/data.json"))
-            {
-                flights = JsonConvert.DeserializeObject<List<FlightRoute>>(reader.ReadToEnd());
-            }
-
-            return flights;
+            return _repository.GetAllFlights();
         }
 
+        /* [HttpGet]
+         public IEnumerable<FlightRoute> GetFlights()
+         {
+             List<FlightRoute> flights = new List<FlightRoute>();
+
+             using (StreamReader reader = new StreamReader(@"Data/data.json"))
+             {
+                 flights = JsonConvert.DeserializeObject<List<FlightRoute>>(reader.ReadToEnd());
+             }
+
+             return flights;
+         }
+
+         [HttpGet("{id}")]
+         public async Task<ActionResult<Flight>> GetOneFlight(FlightRequest request)
+         {
+             var options = FlightsController.
+
+                         var puppy = await db.Puppy.FindAsync(id);
+
+             if (puppy == null)
+             {
+                 return NotFound();
+             }
+
+             return puppy;
+         }*/
         /*[HttpGet]
         public IEnumerable<string> Get()
         {
