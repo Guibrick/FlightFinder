@@ -1,4 +1,5 @@
 ﻿using FlightFinder.Models;
+using FlightFinder.Models.DTO;
 using Newtonsoft.Json;
 
 namespace FlightFinder.Services
@@ -16,10 +17,7 @@ namespace FlightFinder.Services
             FlightRoutes = flights;
         }
 
-        public IEnumerable<FlightRoute> GetAllFlights()
-        {
-            return FlightRoutes;
-        }
+        public IEnumerable<FlightRoute> GetAllFlights() => FlightRoutes;
 
         public IEnumerable<List<Flight>> GetDestination(ItinerariesRequest request)
         {
@@ -44,6 +42,7 @@ namespace FlightFinder.Services
                 flight.Itineraries = departures;
                 times.Add(flight);
             }
+
             return times;
         }
 
@@ -59,8 +58,8 @@ namespace FlightFinder.Services
                 flight.Itineraries = arrivals;
                 times.Add(flight);
             }
+
             return times;
         }
     }
-
 }

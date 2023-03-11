@@ -1,4 +1,5 @@
 ﻿using FlightFinder.Models;
+using FlightFinder.Models.DTO;
 using FlightFinder.Services;
 using Microsoft.AspNetCore.Mvc;
 

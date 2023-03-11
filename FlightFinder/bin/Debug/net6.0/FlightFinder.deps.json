@@ -8,13 +8,26 @@
     ".NETCoreApp,Version=v6.0": {
       "FlightFinder/1.0.0": {
         "dependencies": {
+          "Bricelam.EntityFrameworkCore.Pluralizer": "1.0.0",
           "Microsoft.EntityFrameworkCore.Design": "6.0.11",
           "Microsoft.EntityFrameworkCore.SqlServer": "6.0.11",
+          "Microsoft.EntityFrameworkCore.Tools": "6.0.11",
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": "6.0.10",
           "Swashbuckle.AspNetCore": "6.2.3"
         },
         "runtime": {
           "FlightFinder.dll": {}
+        }
+      },
+      "Bricelam.EntityFrameworkCore.Pluralizer/1.0.0": {
+        "dependencies": {
+          "Microsoft.EntityFrameworkCore.Design": "6.0.11"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Bricelam.EntityFrameworkCore.Pluralizer.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
         }
       },
       "Humanizer.Core/2.8.26": {
@@ -934,6 +947,11 @@
             "assemblyVersion": "6.0.11.0",
             "fileVersion": "6.0.1122.51302"
           }
+        }
+      },
+      "Microsoft.EntityFrameworkCore.Tools/6.0.11": {
+        "dependencies": {
+          "Microsoft.EntityFrameworkCore.Design": "6.0.11"
         }
       },
       "Microsoft.Extensions.ApiDescription.Server/3.0.0": {},
@@ -2273,6 +2291,13 @@
       "serviceable": false,
       "sha512": ""
     },
+    "Bricelam.EntityFrameworkCore.Pluralizer/1.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-akiz3hGnpDgZssTGTnTehy7cy8gJ3RME7jULOkxWHuoSUUmkyxHO8USA/DDTz9Zc+o3RvTdY888NrjDcmb3OJA==",
+      "path": "bricelam.entityframeworkcore.pluralizer/1.0.0",
+      "hashPath": "bricelam.entityframeworkcore.pluralizer.1.0.0.nupkg.sha512"
+    },
     "Humanizer.Core/2.8.26": {
       "type": "package",
       "serviceable": true,
@@ -2510,6 +2535,13 @@
       "sha512": "sha512-ua2+N4y/t5LZ78sO4ZBeP4d7mp/NFFWN2+wktMXCCBl3tR1s06r0I0W6lQz36Z4F1J45Lwb4O8djocqnEEYC2Q==",
       "path": "microsoft.entityframeworkcore.sqlserver/6.0.11",
       "hashPath": "microsoft.entityframeworkcore.sqlserver.6.0.11.nupkg.sha512"
+    },
+    "Microsoft.EntityFrameworkCore.Tools/6.0.11": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-GDmG27PBUbWjUCxDHOtXRkHZZNGLGWX/2eFyQI1mzLyVuFHKWPTojZlzjztchCA50d6+2LcZiEStps5OoP90eA==",
+      "path": "microsoft.entityframeworkcore.tools/6.0.11",
+      "hashPath": "microsoft.entityframeworkcore.tools.6.0.11.nupkg.sha512"
     },
     "Microsoft.Extensions.ApiDescription.Server/3.0.0": {
       "type": "package",

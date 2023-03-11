@@ -1,6 +1,6 @@
-﻿// using FlightFinder.Data;
-
+﻿using FlightFinder.Data;
 using FlightFinder.Services;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,6 +11,11 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<IFlightRepository, FlightRepository>();
+builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<IBookingRepository, BookingRepository>();
+builder.Services
+    .AddDbContext<FlightsContext>(option =>
+    option.UseSqlServer("Server=localhost, 1433;Database=FlightBooking;User Id=sa;Password=Stockholm-9876;TrustServerCertificate=True;"));
 
 var app = builder.Build();
 

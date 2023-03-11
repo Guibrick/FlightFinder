@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "clISqIMrt2M9l3ESVXUNegu6Lle/61CIztUaqkjHj+GxqYg/azxWLBllWfb08csJIdUOdTyGy6GSTZn8I7612Q==",
+  "dgSpecHash": "083Tm4PTF4shgR6nadh2hc0K3IWw8JVFOnJ71SbXVDRoofeJ8pgN4AaFMsR3+tiCrE8VSt3Sr5YutNGyVjaduQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\guibe\\salt_projects\\FlightFinder\\FlightFinder\\FlightFinder.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\guibe\\.nuget\\packages\\bricelam.entityframeworkcore.pluralizer\\1.0.0\\bricelam.entityframeworkcore.pluralizer.1.0.0.nupkg.sha512",
     "C:\\Users\\guibe\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\guibe\\.nuget\\packages\\messagepack\\2.1.152\\messagepack.2.1.152.nupkg.sha512",
     "C:\\Users\\guibe\\.nuget\\packages\\messagepack.annotations\\2.1.152\\messagepack.annotations.2.1.152.nupkg.sha512",
@@ -38,6 +39,7 @@
     "C:\\Users\\guibe\\.nuget\\packages\\microsoft.entityframeworkcore.design\\6.0.11\\microsoft.entityframeworkcore.design.6.0.11.nupkg.sha512",
     "C:\\Users\\guibe\\.nuget\\packages\\microsoft.entityframeworkcore.relational\\6.0.11\\microsoft.entityframeworkcore.relational.6.0.11.nupkg.sha512",
     "C:\\Users\\guibe\\.nuget\\packages\\microsoft.entityframeworkcore.sqlserver\\6.0.11\\microsoft.entityframeworkcore.sqlserver.6.0.11.nupkg.sha512",
+    "C:\\Users\\guibe\\.nuget\\packages\\microsoft.entityframeworkcore.tools\\6.0.11\\microsoft.entityframeworkcore.tools.6.0.11.nupkg.sha512",
     "C:\\Users\\guibe\\.nuget\\packages\\microsoft.extensions.apidescription.server\\3.0.0\\microsoft.extensions.apidescription.server.3.0.0.nupkg.sha512",
     "C:\\Users\\guibe\\.nuget\\packages\\microsoft.extensions.caching.abstractions\\6.0.0\\microsoft.extensions.caching.abstractions.6.0.0.nupkg.sha512",
     "C:\\Users\\guibe\\.nuget\\packages\\microsoft.extensions.caching.memory\\6.0.1\\microsoft.extensions.caching.memory.6.0.1.nupkg.sha512",

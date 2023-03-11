@@ -10,9 +10,9 @@ namespace FlightFinder.Models
         public string? Currency { get; set; }
 
         [JsonPropertyName("adult")]
-        public float Adult { get; set; }
+        public double Adult { get; set; }
 
         [JsonPropertyName("child")]
-        public float Child { get; set; }
+        public double Child { get; set; }
     }
 }

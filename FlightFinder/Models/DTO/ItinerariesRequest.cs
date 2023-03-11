@@ -1,6 +1,6 @@
 ﻿using System.Text.Json.Serialization;
 
-namespace FlightFinder.Models
+namespace FlightFinder.Models.DTO
 {
     public class ItinerariesRequest
     {
