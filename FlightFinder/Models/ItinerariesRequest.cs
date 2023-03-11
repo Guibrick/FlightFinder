@@ -2,7 +2,7 @@
 
 namespace FlightFinder.Models
 {
-    public class FlightRequest
+    public class ItinerariesRequest
     {
         [JsonPropertyName("departureDestination")]
         public string DepartureDestination { get; set; }

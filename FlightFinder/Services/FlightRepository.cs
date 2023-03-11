@@ -5,7 +5,7 @@ namespace FlightFinder.Services
 {
     public class FlightRepository : IFlightRepository
     {
-        public IEnumerable<FlightRoute> Flights { get; set; }
+        public List<FlightRoute> FlightRoutes { get; set; }
         public FlightRepository()
         {
             var flights = new List<FlightRoute>();
@@ -13,17 +13,17 @@ namespace FlightFinder.Services
             using (StreamReader reader = new StreamReader(@"Data/data.json"))
                 flights = JsonConvert.DeserializeObject<List<FlightRoute>>(reader.ReadToEnd());
 
-            Flights = flights;
+            FlightRoutes = flights;
         }
 
         public IEnumerable<FlightRoute> GetAllFlights()
         {
-            return Flights;
+            return FlightRoutes;
         }
 
-        public IEnumerable<List<Flight>> GetDestination(FlightRequest request)
+        public IEnumerable<List<Flight>> GetDestination(ItinerariesRequest request)
         {
-            var itineraries = Flights
+            var itineraries = FlightRoutes
                 .Where(flight => flight.DepartureDestination == request.DepartureDestination)
                 .Where(flight => flight.ArrivalDestination == request.ArrivalDestination)
                 .Select(flight => flight.Itineraries)
@@ -31,5 +31,36 @@ namespace FlightFinder.Services
 
             return itineraries;
         }
+
+        public List<FlightRoute> GetDepartureTime(DepartureTimeRequest request)
+        {
+            var times = new List<FlightRoute>();
+
+            foreach (var flight in FlightRoutes)
+            {
+                var departures = flight.Itineraries
+                .FindAll(a => a.DepartureAt == request.DepartureAt);
+
+                flight.Itineraries = departures;
+                times.Add(flight);
+            }
+            return times;
+        }
+
+        public List<FlightRoute> GetArrivalTime(ArrivalTimeRequest request)
+        {
+            var times = new List<FlightRoute>();
+
+            foreach (var flight in FlightRoutes)
+            {
+                var arrivals = flight.Itineraries
+                .FindAll(a => a.ArrivalAt == request.ArrivalAt);
+
+                flight.Itineraries = arrivals;
+                times.Add(flight);
+            }
+            return times;
+        }
     }
+
 }
