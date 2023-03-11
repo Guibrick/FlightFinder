@@ -1,20 +1,18 @@
-﻿using FlightFinder.Models;
+﻿using FlightFinder.Data;
+using FlightFinder.Models;
 using FlightFinder.Models.DTO;
-using Newtonsoft.Json;
 
 namespace FlightFinder.Services
 {
     public class UserRepository : IUserRepository
     {
-        public List<FlightRoute> FlightRoutes { get; set; }
-        public UserRepository()
+        readonly FlightsContext db;
+        public UserRepository(FlightsContext _db) => db = _db;
+
+        public IEnumerable<User> AllUsers()
         {
-            var flights = new List<FlightRoute>();
-
-            using (StreamReader reader = new StreamReader(@"Data/data.json"))
-                flights = JsonConvert.DeserializeObject<List<FlightRoute>>(reader.ReadToEnd());
-
-            FlightRoutes = flights;
+            var users = db.Users.ToList();
+            return users;
         }
 
         public User CreateUser(UserRequest request)
@@ -29,6 +27,19 @@ namespace FlightFinder.Services
             };
 
             return user;
+        }
+
+        public User Login(LoginRequest request)
+        {
+            var login = AllUsers()
+                .First(x => x.Email == request.Email);
+
+            if (login != null && login.Password == request.Password)
+            {
+                return login;
+            }
+
+            throw new Exception();
         }
     }
 }

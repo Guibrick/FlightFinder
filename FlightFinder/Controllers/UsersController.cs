@@ -3,7 +3,6 @@ using FlightFinder.Models;
 using FlightFinder.Models.DTO;
 using FlightFinder.Services;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 
 namespace FlightFinder.Controllers
 {
@@ -21,9 +20,9 @@ namespace FlightFinder.Controllers
         }
 
         [HttpGet("AllUsers")]
-        public async Task<ActionResult<IEnumerable<User>>> GetAll()
+        public ActionResult<IEnumerable<User>> GetAll()
         {
-            var all = await db.Users.ToListAsync();
+            var all = repository.AllUsers();
             return Ok(all);
         }
 
@@ -35,6 +34,14 @@ namespace FlightFinder.Controllers
             await db.SaveChangesAsync();
 
             return Created("", user);
+        }
+
+        [HttpPost("Login")]
+        public ActionResult<User> GetLoginUser([FromForm] LoginRequest request)
+        {
+            var login = repository.Login(request);
+
+            return login;
         }
     }
 }
