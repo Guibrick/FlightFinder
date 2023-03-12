@@ -2,19 +2,23 @@
 using FlightFinder.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
+using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
 namespace FlightFinder.Migrations
 {
     [DbContext(typeof(FlightsContext))]
-    partial class FlightsContextModelSnapshot : ModelSnapshot
+    [Migration("20230312131733_ChangeBookingName")]
+    partial class ChangeBookingName
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-.HasAnnotation("ProductVersion", "6.0.11")
+                .HasAnnotation("ProductVersion", "6.0.11")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
@@ -89,7 +93,10 @@ namespace FlightFinder.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("FlightFinder.Models.User", b => b.Navigation("Bookings"));
+            modelBuilder.Entity("FlightFinder.Models.User", b =>
+                {
+                    b.Navigation("Bookings");
+                });
 #pragma warning restore 612, 618
         }
     }

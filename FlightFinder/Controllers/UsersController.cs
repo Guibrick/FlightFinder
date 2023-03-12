@@ -20,7 +20,7 @@ namespace FlightFinder.Controllers
         }
 
         [HttpGet("AllUsers")]
-        public ActionResult<IEnumerable<User>> GetAll()
+        public async Task<ActionResult<IEnumerable<User>>> GetAll()
         {
             var all = repository.AllUsers();
             return Ok(all);
@@ -37,11 +37,22 @@ namespace FlightFinder.Controllers
         }
 
         [HttpPost("Login")]
-        public ActionResult<User> GetLoginUser([FromForm] LoginRequest request)
+        public async Task<ActionResult<User>> GetLoginUser([FromForm] LoginRequest request)
         {
             var login = repository.Login(request);
-
             return login;
+        }
+
+        [HttpDelete("Delete")]
+        public async Task<IActionResult> DeleteUser(string id)
+        {
+            var user = await db.Users.FindAsync(id);
+            if (user == null) return NotFound();
+
+            db.Users.Remove(user);
+            await db.SaveChangesAsync();
+
+            return NoContent();
         }
     }
 }

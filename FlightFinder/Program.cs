@@ -15,8 +15,10 @@ builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IBookingRepository, BookingRepository>();
 builder.Services
     .AddDbContext<FlightsContext>(option =>
-    option.UseSqlServer("Server=localhost, 1433;Database=FlightBooking;User Id=sa;Password=Stockholm-9876;TrustServerCertificate=True;"));
-
+    {
+        option.UseSqlServer("Server=localhost, 1433;Database=FlightBooking;User Id=sa;Password=Stockholm-9876;TrustServerCertificate=True;");
+        option.UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking);
+    });
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
