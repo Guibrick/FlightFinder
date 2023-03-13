@@ -46,7 +46,7 @@ namespace FlightFinder.Services
 
             return booking;
 
-            /*var itineraries = FlightRoutes.Select(d => d.Itineraries).ToArray();
+            /*var itineraries = FlightRoutes.Select(d => d.Itineraries);
 
             var price = new List<double>();
 
