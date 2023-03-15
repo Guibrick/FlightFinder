@@ -27,6 +27,7 @@ const FlightSearch = () => {
     const [booking, setBooking] = useState<IBooking[]>([]);
     const [flight, setFlight] = useState<IFlight[]>([]);
     const [user, setUser] = useState<IUser[]>([]);
+    const [selectTrip, setSelectTrip] = useState("one");
     const [departure, setDeparture] = useState("");
     const [arrival, setArrival] = useState("");
     const [departureDate, setDepartureDate] = useState("");
@@ -52,12 +53,16 @@ const FlightSearch = () => {
     var singleDepartures = Array.from(new Set(flight.map((option) => option.departureDestination)));
     var singleDestinations = Array.from(new Set(flight.map((option) => option.arrivalDestination)));
 
+    const handleSelectTrip = (e: any) => {
+        setSelectTrip(e.target.value);
+    };
+
     return (
         <Box m={7} sx={{ width: 400, height: 400 }}>
             <Grid container spacing={1}>
 
                 <Grid xs={12} sx={{ ml: 1 }}>
-                    <RadioGroup row>
+                    <RadioGroup row onChange={handleSelectTrip} value={selectTrip}>
                         <FormControlLabel
                             value="one"
                             control={<Radio color="primary" />}
@@ -108,9 +113,11 @@ const FlightSearch = () => {
                     <Grid xs={12}>
                         <DatePicker label="Departure Date" />
                     </Grid>
-                    <Grid xs={12}>
-                        <DatePicker label="Return Date" />
-                    </Grid>
+                    {selectTrip?.toUpperCase() === "BOTH" && (
+                        <Grid xs={12}>
+                            <DatePicker label="Return Date" />
+                        </Grid>
+                    )}
                 </Grid>
 
                 <Grid xs={12} sx={{ ml: 1, mt: 2 }}>
