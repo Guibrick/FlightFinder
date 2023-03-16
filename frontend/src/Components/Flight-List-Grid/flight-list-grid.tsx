@@ -1,61 +1,17 @@
-import React from "react";
-import PropTypes from "prop-types";
+import { useState } from "react";
+import IFlight from "../../Interfaces/IFlight";
+import { Flight } from "@mui/icons-material";
+import { format } from "date-fns";
 
-import { makeStyles } from "@material-ui/core/styles";
-import {
-    Avatar,
-    Button,
-    Card,
-    CardContent,
-    CircularProgress,
-    Grid,
-    Typography,
-    Table,
-    TableBody,
-    TableCell,
-    TablePagination,
-    TableRow
-} from "@material-ui/core";
-import { thousandSeparator } from "../../Services/global-services";
+import { Avatar, Button, Card, CardContent, CircularProgress, Grid, Typography, Table, TableBody, TableCell, TablePagination, TableRow, List } from "@material-ui/core";
 
+/*const FlightsList = (props: IFlight) => {
 
-const useStyles = makeStyles(() => ({
-    textAlign: {
-        textAlign: "right"
-    },
-    textAlignCenter: {
-        textAlign: "center"
-    },
-    cardContainer: {
-        marginBottom: 5
-    }
-}));
-
-const FlightListOneWay = (props: any) => {
-    const { flightList, bookNow } = props;
-    const classes = useStyles();
-    const [page, setPage] = React.useState(0);
-    const [rowsPerPage, setRowsPerPage] = React.useState(5);
-    let component = null;
-
-    /*const handleChangePage = (event: any, newPage: any) => {
-        setPage(newPage);
-    };
-
-    const handleChangeRowsPerPage = (event: any) => {
-        setRowsPerPage(parseInt(event.target.value, 10));
-        setPage(0);
-    };*/
-
-    if (flightList?.loading) {
-        component = <CircularProgress />;
-    } else if (flightList?.result?.length > 0) {
-        component = (
-            <Table>
-                <TableBody>
-                    {flightList.result
-                        .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-                        .map((val: any, index: any) => {
+        if (props.arrivalDestination !== undefined && props.arrivalDestination.length > 5) {
+            const list =
+                <Table>
+                    <TableBody>
+                        {props. .map((val: any, index: any) => {
                             return (
                                 <TableRow key={index}>
                                     <TableCell>
@@ -108,11 +64,65 @@ const FlightListOneWay = (props: any) => {
                                 </TableRow>
                             );
                         })}
-                </TableBody>
-            </Table>
+                    </TableBody>
+                </Table>
         );
     } else if (flightList?.result?.length === 0) {
-        component = <Typography>{`No Records Found..`}</Typography>;
+    <Typography>{`No Records Found..`}</Typography>;
+
+    return (
+        <Grid container>
+            <Grid item xs={12}>
+                {list}
+            </Grid>
+        </Grid>
+    );
+};
+
+};
+export default FlightsList;*/
+
+
+
+
+/*import React, { useState } from "react";
+import PropTypes from "prop-types";
+
+import { makeStyles } from "@material-ui/core/styles";
+
+
+
+const useStyles = makeStyles(() => ({
+    textAlign: {
+        textAlign: "right"
+    },
+    textAlignCenter: {
+        textAlign: "center"
+    },
+    cardContainer: {
+        marginBottom: 5
+    }
+}));
+
+const FlightListOneWay = (props: any) => {
+    const { flightList, bookNow } = props;
+    const classes = useStyles();
+    const [page, setPage] = useState("");
+    const [rowsPerPage, setRowsPerPage] = useState("");
+    let component = null;
+
+    const handleChangePage = (event: any, newPage: any) => {
+        setPage(newPage);
+    };
+
+    const handleChangeRowsPerPage = (event: any) => {
+        setRowsPerPage(parseInt(event.target.value, 10));
+        setPage(0);
+    }
+
+    if (flightList?.loading) {
+        component = <CircularProgress />;
+    } else 
     } else if (flightList?.error) {
         component = <Typography>{`Unable to fetch Data...`}</Typography>;
     }
@@ -134,7 +144,7 @@ FlightListOneWay.propTypes = {
 
 export default FlightListOneWay;
 
-/*<TablePagination
+<TablePagination
                     rowsPerPageOptions={[5, 10, 25]}
                     component="div"
                     count={flightList.result.length}
@@ -143,3 +153,42 @@ export default FlightListOneWay;
                     onChangePage={handleChangePage}
                     onChangeRowsPerPage={handleChangeRowsPerPage}
                 />*/
+
+
+/*    const handleClick = () => { };
+
+return (
+    <div>
+        <div className="listContainer">
+            <div className="listWrapper">
+                <div className="listSearch">
+                    <h1 className="lsTitle">Search</h1>
+                    <div className="lsItem">
+                        <label>Destination</label>
+                        <input placeholder={props.departureDestination} type="text" />
+                    </div>
+                    <div className="lsOptionItem">
+                        <span className="lsOptionText">Adult</span>
+                        <input
+                            type="number"
+                            min={1}
+                            className="lsOptionInput"
+                            placeholder={props.arrivalDestination}
+                        />
+                    </div>
+                    <div className="lsOptionItem">
+                        <span className="lsOptionText">Children</span>
+                        <input
+                            type="number"
+                            min={1}
+                            className="lsOptionInput"
+                            placeholder={props.departureDestination}
+                        />
+                    </div>
+                </div>
+            </div>
+            <button onClick={handleClick}>Search</button>
+        </div>
+    </div>
+);*/
+

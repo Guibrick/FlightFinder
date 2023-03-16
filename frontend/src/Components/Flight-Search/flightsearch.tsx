@@ -1,27 +1,13 @@
 import React, { useState, useEffect } from "react";
-import PropTypes from "prop-types";
-import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router";
-
-import { makeStyles } from "@material-ui/core/styles";
-import {
-    TextField,
-    Button,
-    Radio,
-    FormControlLabel,
-    RadioGroup,
-    Typography,
-    responsiveFontSizes
-} from "@material-ui/core";
-import Box from '@mui/system/Box';
+import { TextField, Button, Radio, FormControlLabel, RadioGroup } from "@material-ui/core";
+import { DatePicker, LocalizationProvider } from "@mui/x-date-pickers";
+import { Autocomplete } from "@mui/material";
 import Grid from '@mui/system/Unstable_Grid';
+import Box from '@mui/system/Box';
 
 import IFlight from "../../Interfaces/IFlight";
 import IBooking from "../../Interfaces/IBooking";
 import IUser from "../../Interfaces/IUser";
-import { DatePicker, LocalizationProvider } from "@mui/x-date-pickers";
-import { Autocomplete } from "@mui/material";
-
 
 const FlightSearch = () => {
     const [booking, setBooking] = useState<IBooking[]>([]);
@@ -30,9 +16,8 @@ const FlightSearch = () => {
     const [selectTrip, setSelectTrip] = useState("one");
     const [departure, setDeparture] = useState("");
     const [arrival, setArrival] = useState("");
-    const [departureDate, setDepartureDate] = useState("");
-    const [inputDeparture, setInputDeparture] = useState("");
-    const [inputArrival, setInputArrival] = useState("");
+    const [departureDate, setDepartureDate] = useState(null);
+    const [arrivalDate, setArrivalDate] = useState(null);
 
     useEffect(() => {
         const getData = async () => {
@@ -53,12 +38,12 @@ const FlightSearch = () => {
     var singleDepartures = Array.from(new Set(flight.map((option) => option.departureDestination)));
     var singleDestinations = Array.from(new Set(flight.map((option) => option.arrivalDestination)));
 
-    const handleSelectTrip = (e: any) => {
-        setSelectTrip(e.target.value);
-    };
+    const handleSelectTrip = (e: any) => { setSelectTrip(e.target.value); };
+
+    const fullInfo = () => { console.log(departure, arrival, departureDate, arrivalDate) };
 
     return (
-        <Box m={7} sx={{ width: 400, height: 400 }}>
+        <Box m={10} sx={{ width: 400, height: 400 }}>
             <Grid container spacing={1}>
 
                 <Grid xs={12} sx={{ ml: 1 }}>
@@ -79,6 +64,8 @@ const FlightSearch = () => {
                 <Grid xs={12} >
                     <Grid spacing={2}>
                         <Autocomplete
+                            inputValue={departure}
+                            onInputChange={(event, newInputValue) => { setDeparture(newInputValue); }}
                             freeSolo
                             disableClearable
                             options={singleDepartures}
@@ -92,8 +79,11 @@ const FlightSearch = () => {
                                         type: 'search',
                                     }} />)} />
                     </Grid>
+
                     <Grid spacing={2}>
                         <Autocomplete
+                            inputValue={arrival}
+                            onInputChange={(event, newInputValue) => { setArrival(newInputValue); }}
                             freeSolo
                             disableClearable
                             options={singleDestinations}
@@ -111,30 +101,31 @@ const FlightSearch = () => {
 
                 <Grid sx={{ width: 180 }}>
                     <Grid xs={12}>
-                        <DatePicker label="Departure Date" />
+                        <DatePicker
+                            value={departureDate}
+                            onChange={(newValue) => setDepartureDate(newValue)}
+                            label="Departure Date" />
                     </Grid>
                     {selectTrip?.toUpperCase() === "BOTH" && (
                         <Grid xs={12}>
-                            <DatePicker label="Return Date" />
+                            <DatePicker
+                                value={arrivalDate}
+                                onChange={(newValue) => setArrivalDate(newValue)}
+                                label="Return Date" />
                         </Grid>
                     )}
                 </Grid>
 
                 <Grid xs={12} sx={{ ml: 1, mt: 2 }}>
-                    <Button variant="contained">
+                    <Button variant="contained" onClick={fullInfo}>
                         {`Search Flight`}
                     </Button>
                 </Grid>
 
             </Grid>
         </Box>
+
     );
 };
 
 export default FlightSearch;
-
-/*        <>
-{booking.map((value) => { return (<li>{value.departure} </li>) })}
-{flight.map((value) => { return (<li>{value.itineraries[0].arrivalAt} </li>) })}
-{user.map((value) => { return (<li>{value.name} </li>) })}
-</>*/
