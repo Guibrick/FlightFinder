@@ -7,6 +7,8 @@ import Home from './Components/Home/home';
 import FlightSearch from './Components/Flight-Search/flightsearch';
 import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import FlightsList from './Components/Flight-List-Grid/flight-list-grid';
+import IFlight from './Interfaces/IFlight';
 
 function App() {
     return (

@@ -2,85 +2,95 @@ import { useState } from "react";
 import IFlight from "../../Interfaces/IFlight";
 import { Flight } from "@mui/icons-material";
 import { format } from "date-fns";
+import FlightSearch from "../Flight-Search/flightsearch";
 
 import { Avatar, Button, Card, CardContent, CircularProgress, Grid, Typography, Table, TableBody, TableCell, TablePagination, TableRow, List } from "@material-ui/core";
+import Departure from "../../Interfaces/Departure";
 
-/*const FlightsList = (props: IFlight) => {
+interface props {
+    flight: IFlight
+    departure: Departure | undefined
+};
 
-        if (props.arrivalDestination !== undefined && props.arrivalDestination.length > 5) {
-            const list =
-                <Table>
-                    <TableBody>
-                        {props. .map((val: any, index: any) => {
-                            return (
-                                <TableRow key={index}>
-                                    <TableCell>
-                                        <Card className={classes.cardContainer}>
-                                            <CardContent>
-                                                <Grid container>
-                                                    <Grid item xs={2}>
-                                                        <Avatar
-                                                            src={val.airlineLogo}
-                                                            alt={val.airlineName}
-                                                        />
-                                                    </Grid>
-                                                    <Grid item xs={2} className={classes.textAlignCenter}>
-                                                        <Typography align="center">
-                                                            {val.deptTime}
-                                                        </Typography>
-                                                        <Typography variant="caption">
-                                                            {val.deptCity}
-                                                        </Typography>
-                                                    </Grid>
-                                                    <Grid item xs={2} className={classes.textAlignCenter}>
-                                                        <Typography>{val.airlineName}</Typography>
-                                                        <Typography variant="caption">
-                                                            {val.flightNbr}
-                                                        </Typography>
-                                                        <br />
-                                                        <Typography variant="caption">
-                                                            {val.noOfStops === "0"
-                                                                ? `No Stops`
-                                                                : `${val.noOfStops} Stops`}
-                                                        </Typography>
-                                                    </Grid>
-                                                    <Grid item xs={2} className={classes.textAlignCenter}>
-                                                        <Typography>{val.arivalTime}</Typography>
-                                                        <Typography variant="caption">
-                                                            {val.arivalCity}
-                                                        </Typography>
-                                                    </Grid>
-                                                    <Grid item xs={4} className={classes.textAlign}>
-                                                        <Button
-                                                            variant="contained"
-                                                            color="primary"
-                                                            onClick={() => bookNow(val)}
-                                                        >{`Rs. ${thousandSeparator(val?.price)}`}</Button>
-                                                    </Grid>
+const FlightsList = ({ flight, departure }: props) => {
+
+    if (departure?.departure === flight.departureDestination) {
+        const list = <div>{flight.arrivalDestination}</div>
+
+
+        /*const list =
+            <Table>
+                <TableBody>
+                    {props. .map((val: any, index: any) => {
+                        return (
+                            <TableRow key={index}>
+                                <TableCell>
+                                    <Card className={classes.cardContainer}>
+                                        <CardContent>
+                                            <Grid container>
+                                                <Grid item xs={2}>
+                                                    <Avatar
+                                                        src={val.airlineLogo}
+                                                        alt={val.airlineName}
+                                                    />
                                                 </Grid>
-                                            </CardContent>
-                                        </Card>
-                                    </TableCell>
-                                </TableRow>
-                            );
-                        })}
-                    </TableBody>
-                </Table>
-        );
-    } else if (flightList?.result?.length === 0) {
-    <Typography>{`No Records Found..`}</Typography>;
-
-    return (
-        <Grid container>
-            <Grid item xs={12}>
-                {list}
-            </Grid>
-        </Grid>
+                                                <Grid item xs={2} className={classes.textAlignCenter}>
+                                                    <Typography align="center">
+                                                        {val.deptTime}
+                                                    </Typography>
+                                                    <Typography variant="caption">
+                                                        {val.deptCity}
+                                                    </Typography>
+                                                </Grid>
+                                                <Grid item xs={2} className={classes.textAlignCenter}>
+                                                    <Typography>{val.airlineName}</Typography>
+                                                    <Typography variant="caption">
+                                                        {val.flightNbr}
+                                                    </Typography>
+                                                    <br />
+                                                    <Typography variant="caption">
+                                                        {val.noOfStops === "0"
+                                                            ? `No Stops`
+                                                            : `${val.noOfStops} Stops`}
+                                                    </Typography>
+                                                </Grid>
+                                                <Grid item xs={2} className={classes.textAlignCenter}>
+                                                    <Typography>{val.arivalTime}</Typography>
+                                                    <Typography variant="caption">
+                                                        {val.arivalCity}
+                                                    </Typography>
+                                                </Grid>
+                                                <Grid item xs={4} className={classes.textAlign}>
+                                                    <Button
+                                                        variant="contained"
+                                                        color="primary"
+                                                        onClick={() => bookNow(val)}
+                                                    >{`Rs. ${thousandSeparator(val?.price)}`}</Button>
+                                                </Grid>
+                                            </Grid>
+                                        </CardContent>
+                                    </Card>
+                                </TableCell>
+                            </TableRow>
+                        );
+                    })}
+                </TableBody>
+            </Table>
     );
-};
+} else if (flightList?.result?.length === 0) {
+<Typography>{`No Records Found..`}</Typography>;*/
+
+        return (
+            <Grid container>
+                <Grid item xs={12}>
+                    {list}
+                </Grid>
+            </Grid>
+        );
+    };
 
 };
-export default FlightsList;*/
+export default FlightsList;
 
 
 
